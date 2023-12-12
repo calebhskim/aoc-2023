@@ -1,7 +1,7 @@
-use day2::part_one;
+use day2::part_two;
 
 pub mod day2;
 
 fn main() {
-    part_one().unwrap();
+    part_two().unwrap();
 }
