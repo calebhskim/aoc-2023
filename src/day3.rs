@@ -13,14 +13,10 @@ pub fn part_one() -> Result<(), Error> {
     let file = fs::read_to_string(file_path).unwrap();
 
     for line in file.lines() {
-        let mut col:i64 = 0;
-
-        for (_, c) in line.char_indices() {
+        for (col, (_, c)) in (0_i64..).zip(line.char_indices()) {
             if !c.is_ascii_digit() && c != '.' {
                 symbol_map.insert([row, col], c);
             }
-
-            col += 1;
         }
 
         row += 1;
@@ -31,16 +27,15 @@ pub fn part_one() -> Result<(), Error> {
     for line in file.lines() {
         let mut current_number: Vec<char> = vec![];
         let mut current_cols = vec![];
-        let mut col:i64 = 0;
 
-        for (_, c) in line.char_indices() {
+        for (col, (_, c)) in (0_i64..).zip(line.char_indices()) {
             if c.is_ascii_digit() {
                 current_number.push(c);
                 current_cols.push(col);
             }
 
             if !c.is_ascii_digit() || col == (line.len() - 1).try_into().unwrap() {
-                if current_number.len() > 0 {
+                if !current_number.is_empty() {
                     let num_string: String = current_number.into_iter().collect();
                     let num: i64 = num_string.parse::<i64>().unwrap();
 
@@ -63,14 +58,12 @@ pub fn part_one() -> Result<(), Error> {
                 current_cols = vec![];
 
             }
-
-            col += 1;
         }
 
         row += 1;
     }
 
-    println!("Part sum {}", part_sum.to_string());
+    println!("Part sum {}", part_sum);
 
-    return Ok(());
+    Ok(())
 }
