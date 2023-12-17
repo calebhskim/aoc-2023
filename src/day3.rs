@@ -41,7 +41,7 @@ pub fn part_one() -> Result<(), Error> {
                     let num_string: String = current_number.into_iter().collect();
                     let num: i64 = num_string.parse::<i64>().unwrap();
 
-                    // Check if number is adjance to symbol by checking if any of the coordinates
+                    // Check if number is adjacent to symbol by checking if any of the coordinates
                     // around the number exist in the symbol map
                     let mut is_near_symbol = false;
                     for i in current_cols[0] - 1..current_cols[current_cols.len() - 1] + 2 {
