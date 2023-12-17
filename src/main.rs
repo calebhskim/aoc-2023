@@ -1,7 +1,7 @@
-use day4::part_two;
+use day5::part_one;
 
-pub mod day4;
+pub mod day5;
 
 fn main() {
-    part_two().unwrap();
+    part_one().unwrap();
 }
